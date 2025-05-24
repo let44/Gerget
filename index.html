@@ -271,6 +271,7 @@
                             height: auto;
                         }
                     </style>
+                    
 
                 </section>
                 <section class="cart">
@@ -280,308 +281,170 @@
                     </ul>
                     <button onclick="checkout()">Checkout</button>
                     <button onclick="clearCart()">Clear Cart</button>
-                </section>
-               <!-- Cart items will be displayed here -->
-                    </ul>
-                    <button onclick="checkout()">Checkout</button>
-                    <button onclick="clearCart()">Clear Cart</button>
-                </section>
-                    </form>
             </main>
         </body>
         <script>
            // Function to handle the "Buy Now" button click ask for pick or delivery make it option like 1 or 2 and show user form for delivery and pick up
-            function buyNow(itemName, itemPrice) {
-                const deliveryOption = prompt("Choose delivery option:\n1. Pick up\n2. Delivery");
-                if (deliveryOption === "1") {
-                    // Ask for pickup details
-                    const pickupLocation = prompt("Enter your pickup location:");
-                    const pickupTime = prompt("visit us at our nerby store.\n1. 2 hours\n2. 3 hours");
-                    if (pickupTime === "1") {
-                        alert("Your order will be ready for pickup in 2 hours.");
-                    } else if (pickupTime === "2") {
-                        alert("Your order will be ready for pickup in 3 hours.");
-                    } else {
-                        alert("Invalid option. Please choose 1 for 2 hours or 2 for 3 hours.");
-                    }
-                    // show all state that are available for pick up]
-                    const availableStates = ["Lagos", "Abuja", "Port Harcourt", "Ibadan", "Ogun", "Ekiti", "Osun", "Oyo"];
-                    const state = prompt(`Available states for pickup:\n${availableStates.join(", ")}\nEnter your state:`);
-                    if (availableStates.includes(state)) {
-                      //show  the user the area that are available for the state they choose
-                        const availableAreas = {
-                            Lagos: ["Ikeja", "Victoria Island", "Lekki"],
-                            Abuja: ["Wuse", "Garki", "Maitama"],
-                            PortHarcourt: ["GRA", "Obio-Akpor", "Eleme"],
-                            Ibadan: ["Jericho", "Ring Road", "Bodija"],
-                            Ogun: ["Abeokuta", "Ijebu-Ode", "Sagamu"],
-                            Ekiti: ["Ado-Ekiti", "Ikere-Ekiti", "Ise-Ekiti"],
-                            Osun: ["Osogbo", "Ilesa", "Ife"],
-                            Oyo: ["Ibadan", "Oyo", "Saki"]
-                        };
-                        const areas = availableAreas[state];
-                        alert(`Available areas in ${state}:\n${areas.join(", ")}\nYour order will be ready for pickup in ${pickupTime === "1" ? "2 hours" : "3 hours"}.`);
-                    } else {
-                        alert("Invalid state. Please choose from the available states.");
-                    }
-                    // show the user the street that are available for the area they choose and the adress that are available for the street they choose for each state the user choose like if ibandan it will show all the street that are available for ibadan and the adress that are available for the street they choose
-                    if (state === "Lagos") {
-                        const availableStreets = ["Ikorodu", "Ikeja", "Victoria Island"];
-                        const street = prompt(`Available streets in ${state}:\n${availableStreets.join(", ")}\nEnter your street:`);
-                        if (availableStreets.includes(street)) {
-                            const availableAddresses = {
-                                Ikorodu: ["Ikorodu Road", "Ikorodu Town"],
-                                Ikeja: ["Ikeja GRA", "Ikeja City Mall"],
-                                VictoriaIsland: ["Ozumba Mbadiwe", "Adetokunbo Ademola"]
-                            };
-                            const addresses = availableAddresses[street];
-                            alert(`Available addresses in ${street}:\n${addresses.join(", ")}`);
-                        } else {
-                            alert("Invalid street. Please choose from the available streets.");
-                        }
-                    }
-                    if (state === "Abuja") {
-                        const availableStreets = ["Wuse", "Garki", "Maitama"];
-                        const street = prompt(`Available streets in ${state}:\n${availableStreets.join(", ")}\nEnter your street:`);
-                        if (availableStreets.includes(street)) {
-                            const availableAddresses = {
-                                Wuse: ["Wuse Market", "Wuse Zone 4"],
-                                Garki: ["Garki Market", "Garki Area 11"],
-                                Maitama: ["Maitama Amusement Park", "Maitama District"]
-                            };
-                            const addresses = availableAddresses[street];
-                            alert(`Available addresses in ${street}:\n${addresses.join(", ")}`);
-                        } else {
-                            alert("Invalid street. Please choose from the available streets.");
-                        }
-                    }
-                    if (state === "PortHarcourt") {
-                        const availableStreets = ["GRA", "Obio-Akpor", "Eleme"];
-                        const street = prompt(`Available streets in ${state}:\n${availableStreets.join(", ")}\nEnter your street:`);
-                        if (availableStreets.includes(street)) {
-                            const availableAddresses = {
-                                GRA: ["GRA Phase 1", "GRA Phase 2"],
-                                ObioAkpor: ["Obio Akpor Road", "Obio Akpor Town"],
-                                Eleme: ["Eleme Junction", "Eleme Town"]
-                            };
-                            const addresses = availableAddresses[street];
-                            alert(`Available addresses in ${street}:\n${addresses.join(", ")}`);
-                        } else {
-                            alert("Invalid street. Please choose from the available streets.");
-                        }
-                    }
-                    if (state === "Ibadan") {
-                        const availableStreets = ["Jericho", "Ring Road", "Bodija"];
-                        const street = prompt(`Available streets in ${state}:\n${availableStreets.join(", ")}\nEnter your street:`);
-                        if (availableStreets.includes(street)) {
-                            const availableAddresses = {
-                                Jericho: ["Jericho Mall", "Jericho GRA"],
-                                RingRoad: ["Ring Road Junction", "Ring Road Area"],
-                                Bodija: ["Bodija Market", "Bodija Estate"]
-                            };
-                            const addresses = availableAddresses[street];
-                            alert(`Available addresses in ${street}:\n${addresses.join(", ")}`);
-                        } else {
-                            alert("Invalid street. Please choose from the available streets.");
-                        }
-                    }
-                    if (state === "Ogun") {
-                        const availableStreets = ["Abeokuta", "Ijebu-Ode", "Sagamu"];
-                        const street = prompt(`Available streets in ${state}:\n${availableStreets.join(", ")}\nEnter your street:`);
-                        if (availableStreets.includes(street)) {
-                            const availableAddresses = {
-                                Abeokuta: ["Abeokuta GRA", "Abeokuta Town"],
-                                IjebuOde: ["Ijebu Ode Road", "Ijebu Ode Town"],
-                                Sagamu: ["Sagamu Junction", "Sagamu Town"]
-                            };
-                            const addresses = availableAddresses[street];
-                            alert(`Available addresses in ${street}:\n${addresses.join(", ")}`);
-                        } else {
-                            alert("Invalid street. Please choose from the available streets.");
-                        }
-                    }
-                    if (state === "Ekiti") {
-                        const availableStreets = ["Ado-Ekiti", "Ikere-Ekiti", "Ise-Ekiti"];
-                        const street = prompt(`Available streets in ${state}:\n${availableStreets.join(", ")}\nEnter your street:`);
-                        if (availableStreets.includes(street)) {
-                            const availableAddresses = {
-                                AdoEkiti: ["Ado Ekiti GRA", "Ado Ekiti Town"],
-                                IkereEkiti: ["Ikere Ekiti Road", "Ikere Ekiti Town"],
-                                IseEkiti: ["Ise Ekiti Junction", "Ise Ekiti Town"]
-                            };
-                            const addresses = availableAddresses[street];
-                            alert(`Available addresses in ${street}:\n${addresses.join(", ")}`);
-                        } else {
-                            alert("Invalid street. Please choose from the available streets.");
-                        }
-                    }
-                    if (state === "Osun") {
-                        const availableStreets = ["Osogbo", "Ilesa", "Ife"];
-                        const street = prompt(`Available streets in ${state}:\n${availableStreets.join(", ")}\nEnter your street:`);
-                        if (availableStreets.includes(street)) {
-                            const availableAddresses = {
-                                Osogbo: ["Osogbo GRA", "Osogbo Town"],
-                                Ilesa: ["Ilesa Road", "Ilesa Town"],
-                                Ife: ["Ife Junction", "Ife Town"]
-                            };
-                            const addresses = availableAddresses[street];
-                            alert(`Available addresses in ${street}:\n${addresses.join(", ")}`);
-                        } else {
-                            alert("Invalid street. Please choose from the available streets.");
-                        }
-                    }
-                    if (state === "Oyo") {
-                        const availableStreets = ["Ibadan", "Oyo", "Saki"];
-                        const street = prompt(`Available streets in ${state}:\n${availableStreets.join(", ")}\nEnter your street:`);
-                        if (availableStreets.includes(street)) {
-                            const availableAddresses = {
-                                Ibadan: ["Ibadan GRA", "Ibadan Town"],
-                                Oyo: ["Oyo Road", "Oyo Town"],
-                                Saki: ["Saki Junction", "Saki Town"]
-                            };
-                            const addresses = availableAddresses[street];
-                            alert(`Available addresses in ${street}:\n${addresses.join(", ")}`);
-                        } else {
-                            alert("Invalid street. Please choose from the available streets.");
-                            return
-                        }
-                    }
-                    // show the place that we are in that street
-                    if (street === "Ikorodu") {
-                        const availablePlaces = ["Ikorodu Town Hall", "Ikorodu Market", "Ikorodu GRA"];
-                        alert(`Available places in ${street}:\n${availablePlaces.join(", ")}`);
-                    }
-                    if (street === "Ikeja") {
-                        const availablePlaces = ["Ikeja City Mall", "Ikeja GRA", "Ikeja Computer Village"];
-                        alert(`Available places in ${street}:\n${availablePlaces.join(", ")}`);
-                    }
-                    if (street === "Victoria Island") {
-                        const availablePlaces = ["Victoria Island Beach", "Victoria Island Mall", "Victoria Island GRA"];
-                        alert(`Available places in ${street}:\n${availablePlaces.join(", ")}`);
-                    }
-                    if (street === "Wuse") {
-                        const availablePlaces = ["Wuse Market", "Wuse Zone 4", "Wuse GRA"];
-                        alert(`Available places in ${street}:\n${availablePlaces.join(", ")}`);
-                    }
-                    if (street === "Garki") {
-                        const availablePlaces = ["Garki Market", "Garki Area 11", "Garki GRA"];
-                        alert(`Available places in ${street}:\n${availablePlaces.join(", ")}`);
-                    }
-                    if (street === "Maitama") {
-                        const availablePlaces = ["Maitama Amusement Park", "Maitama District", "Maitama GRA"];
-                        alert(`Available places in ${street}:\n${availablePlaces.join(", ")}`);
-                    }
-                    if (street === "GRA") {
-                        const availablePlaces = ["GRA Phase 1", "GRA Phase 2", "GRA GRA"];
-                        alert(`Available places in ${street}:\n${availablePlaces.join(", ")}`);
-                    }
+           // ...existing code...
+function buyNow(itemName, itemPrice) {
+    // Collect all order details
+    let orderDetails = {
+        itemName: itemName,
+        itemPrice: itemPrice,
+        deliveryOption: "",
+        pickupLocation: "",
+        pickupTime: "",
+        state: "",
+        area: "",
+        street: "",
+        address: "",
+        place: "",
+        deliveryAddress: "",
+        deliveryTime: "",
+        totalPrice: itemPrice,
+        packageCode: ""
+    };
 
-                    if (street === "Obio-Akpor") {
-                        const availablePlaces = ["Obio Akpor Road", "Obio Akpor Town", "Obio Akpor GRA"];
-                        alert(`Available places in ${street}:\n${availablePlaces.join(", ")}`);
-                    }
-                    if (street === "Eleme") {
-                        const availablePlaces = ["Eleme Junction", "Eleme Town", "Eleme GRA"];
-                        alert(`Available places in ${street}:\n${availablePlaces.join(", ")}`);
-                    }
-                    if (street === "Jericho") {
-                        const availablePlaces = ["Jericho Mall", "Jericho GRA", "Jericho Town"];
-                        alert(`Available places in ${street}:\n${availablePlaces.join(", ")}`);
-                    }
-                    if (street === "Ring Road") {
-                        const availablePlaces = ["Ring Road Junction", "Ring Road Area", "Ring Road GRA"];
-                        alert(`Available places in ${street}:\n${availablePlaces.join(", ")}`);
-                    }
-                    if (street === "Bodija") {
-                        const availablePlaces = ["Bodija Market", "Bodija Estate", "Bodija GRA"];
-                        alert(`Available places in ${street}:\n${availablePlaces.join(", ")}`);
-                    }
-                    if (street === "Abeokuta") {
-                        const availablePlaces = ["Abeokuta GRA", "Abeokuta Town", "Abeokuta GRA"];
-                        alert(`Available places in ${street}:\n${availablePlaces.join(", ")}`);
-                    }
-                    if (street === "Ijebu-Ode") {
-                        const availablePlaces = ["Ijebu Ode Road", "Ijebu Ode Town", "Ijebu Ode GRA"];
-                        alert(`Available places in ${street}:\n${availablePlaces.join(", ")}`);
-                    }
-                    if (street === "Sagamu") {
-                        const availablePlaces = ["Sagamu Junction", "Sagamu Town", "Sagamu GRA"];
-                        alert(`Available places in ${street}:\n${availablePlaces.join(", ")}`);
-                    }
-                    if (street === "Ado-Ekiti") {
-                        const availablePlaces = ["Ado Ekiti GRA", "Ado Ekiti Town", "Ado Ekiti GRA"];
-                        alert(`Available places in ${street}:\n${availablePlaces.join(", ")}`);
-                    }
-                    if (street === "Ikere-Ekiti") {
-                        const availablePlaces = ["Ikere Ekiti Road", "Ikere Ekiti Town", "Ikere Ekiti GRA"];
-                        alert(`Available places in ${street}:\n${availablePlaces.join(", ")}`);
-                    }
-                    if (street === "Ise-Ekiti") {
-                        const availablePlaces = ["Ise Ekiti Junction", "Ise Ekiti Town", "Ise Ekiti GRA"];
-                        alert(`Available places in ${street}:\n${availablePlaces.join(", ")}`);
-                    }
-                    if (street === "Osogbo") {
-                        const availablePlaces = ["Osogbo GRA", "Osogbo Town", "Osogbo GRA"];
-                        alert(`Available places in ${street}:\n${availablePlaces.join(", ")}`);
-                    }
-                    if (street === "Ilesa") {
-                        const availablePlaces = ["Ilesa Road", "Ilesa Town", "Ilesa GRA"];
-                        alert(`Available places in ${street}:\n${availablePlaces.join(", ")}`);
-                    }
-                    if (street === "Ife") {
-                        const availablePlaces = ["Ife Junction", "Ife Town", "Ife GRA"];
-                        alert(`Available places in ${street}:\n${availablePlaces.join(", ")}`);
-                    }
-                    if (street === "Ibadan") {
-                        const availablePlaces = ["Ibadan GRA", "Ibadan Town", "Ibadan GRA"];
-                        alert(`Available places in ${street}:\n${availablePlaces.join(", ")}`);
-                    }
-                    if (street === "Oyo") {
-                        const availablePlaces = ["Oyo Road", "Oyo Town", "Oyo GRA"];
-                        alert(`Available places in ${street}:\n${availablePlaces.join(", ")}`);
-                    }
-                    if (street === "Saki") {
-                        const availablePlaces = ["Saki Junction", "Saki Town", "Saki GRA"];
-                        alert(`Available places in ${street}:\n${availablePlaces.join(", ")}`
-                    // display the user the total price of the item they choose and ask them to pay
-                        );
-                        alert(`You have chosen pickup for the ${itemName} for #${itemPrice}.\nPickup Location: ${pickupLocation}` +
-                        `\nYour order will be ready for pickup in ${pickupTime === "1" ? "2 hours" : "3 hours"}.` +
-                        `\nPlease transfer to this account number 1234567890`
-                        
-                    );
-                        
-                    
-                    }
+    const deliveryOption = prompt("Choose delivery option:\n1. Pick up\n2. Delivery");
+    if (deliveryOption === "1") {
+        orderDetails.deliveryOption = "Pick up";
+        orderDetails.pickupLocation = prompt("Enter your pickup location:");
+        const pickupTime = prompt("Visit us at our nearby store.\n1. 2 hours\n2. 3 hours");
+        orderDetails.pickupTime = pickupTime === "1" ? "2 hours" : "3 hours";
 
+        // State
+        const availableStates = ["Lagos", "Abuja", "Port Harcourt", "Ibadan", "Ogun", "Ekiti", "Osun", "Oyo"];
+        const state = prompt(`Available states for pickup:\n${availableStates.join(", ")}\nEnter your state:`);
+        if (!availableStates.includes(state)) {
+            alert("Invalid state. Please choose from the available states.");
+            return;
+        }
+        orderDetails.state = state;
 
-                } else if (deliveryOption === "2") {
-                    // Ask for delivery details
-                    const deliveryAddress = prompt("Enter your delivery address:");
-                    const deliveryTime = prompt("we deliver within 24 hours.\n1.two days\n2. three days");
-                    alert(`You have chosen delivery for the ${itemName} for #${itemPrice}.\nDelivery Address: ${deliveryAddress}\nDelivery Time: ${deliveryTime}` +
-                    `\nYour order will be delivered to ${deliveryAddress} in ${deliveryTime === "1" ? "2 days" : "3 days"}.`);
-                    // Add 40% to the item price for delivery based on the item price and the state they choose and delivery time
-                    // Calculate the delivery fee based on the item price and the state they choose
-                    let deliveryFee = 0;
-                    if (deliveryTime === "1") {
-                        deliveryFee = itemPrice * 0.4; // 40% of the item price
-                    } else if (deliveryTime === "2") {
-                        deliveryFee = itemPrice * 0.3; // 30% of the item price
-                    } else {
-                        alert("Invalid delivery time option. Please choose 1 for two days or 2 for three days.");
-                        return;
-                    }
-                    // Calculate the total price including delivery fee
-                    const totalPrice = itemPrice + deliveryFee;
-                    alert(`Your total with delivery fee is #${totalPrice}. Please transfer to this account number 1234567890`);
-                    // display in the screen when the user have pay
-                    alert(`Thank you for your purchase of ${itemName} for #${totalPrice}. Your order will be delivered to ${deliveryAddress} in ${deliveryTime === "1" ? "2 days" : "3 days"}.`);
-                } else {
-                    alert("Invalid option. Please choose 1 for pickup or 2 for delivery.");
-                
-                }
-            }
+        // Area
+        const availableAreas = {
+            Lagos: ["Ikeja", "Victoria Island", "Lekki"],
+            Abuja: ["Wuse", "Garki", "Maitama"],
+            "Port Harcourt": ["GRA", "Obio-Akpor", "Eleme"],
+            Ibadan: ["Jericho", "Ring Road", "Bodija"],
+            Ogun: ["Abeokuta", "Ijebu-Ode", "Sagamu"],
+            Ekiti: ["Ado-Ekiti", "Ikere-Ekiti", "Ise-Ekiti"],
+            Osun: ["Osogbo", "Ilesa", "Ife"],
+            Oyo: ["Ibadan", "Oyo", "Saki"]
+        };
+        const areas = availableAreas[state];
+        const area = prompt(`Available areas in ${state}:\n${areas.join(", ")}\nEnter your area:`);
+        if (!areas.includes(area)) {
+            alert("Invalid area. Please choose from the available areas.");
+            return;
+        }
+        orderDetails.area = area;
+
+        // Street
+        const availableStreets = {
+            Ikeja: ["Ikeja GRA", "Ikeja City Mall"],
+            "Victoria Island": ["Ozumba Mbadiwe", "Adetokunbo Ademola"],
+            Lekki: ["Lekki Phase 1", "Lekki Phase 2"],
+            Wuse: ["Wuse Market", "Wuse Zone 4"],
+            Garki: ["Garki Market", "Garki Area 11"],
+            Maitama: ["Maitama Amusement Park", "Maitama District"],
+            GRA: ["GRA Phase 1", "GRA Phase 2"],
+            "Obio-Akpor": ["Obio Akpor Road", "Obio Akpor Town"],
+            Eleme: ["Eleme Junction", "Eleme Town"],
+            Jericho: ["Jericho Mall", "Jericho GRA"],
+            "Ring Road": ["Ring Road Junction", "Ring Road Area"],
+            Bodija: ["Bodija Market", "Bodija Estate"],
+            Abeokuta: ["Abeokuta GRA", "Abeokuta Town"],
+            "Ijebu-Ode": ["Ijebu Ode Road", "Ijebu Ode Town"],
+            Sagamu: ["Sagamu Junction", "Sagamu Town"],
+            "Ado-Ekiti": ["Ado Ekiti GRA", "Ado Ekiti Town"],
+            "Ikere-Ekiti": ["Ikere Ekiti Road", "Ikere Ekiti Town"],
+            "Ise-Ekiti": ["Ise Ekiti Junction", "Ise Ekiti Town"],
+            Osogbo: ["Osogbo GRA", "Osogbo Town"],
+            Ilesa: ["Ilesa Road", "Ilesa Town"],
+            Ife: ["Ife Junction", "Ife Town"],
+            Ibadan: ["Ibadan GRA", "Ibadan Town"],
+            Oyo: ["Oyo Road", "Oyo Town"],
+            Saki: ["Saki Junction", "Saki Town"]
+        };
+        const streets = availableStreets[area];
+        const street = prompt(`Available streets in ${area}:\n${streets.join(", ")}\nEnter your street:`);
+        if (!streets.includes(street)) {
+            alert("Invalid street. Please choose from the available streets.");
+            return;
+        }
+        orderDetails.street = street;
+
+        // Address
+        const availableAddresses = {
+            "Ikeja GRA": ["Ikeja GRA 1", "Ikeja GRA 2"],
+            "Ikeja City Mall": ["Mall Entrance", "Mall Parking"],
+            "Ozumba Mbadiwe": ["Ozumba 1", "Ozumba 2"],
+            "Adetokunbo Ademola": ["Adetokunbo 1", "Adetokunbo 2"],
+            // ...add more as needed...
+        };
+        const addresses = availableAddresses[street] || ["Main Address 1", "Main Address 2"];
+        const address = prompt(`Available addresses in ${street}:\n${addresses.join(", ")}\nEnter your address:`);
+        if (!addresses.includes(address)) {
+            alert("Invalid address. Please choose from the available addresses.");
+            return;
+        }
+        orderDetails.address = address;
+
+        // Place (optional)
+        const availablePlaces = ["Place 1", "Place 2", "Place 3"];
+        const place = prompt(`Available places in ${street}:\n${availablePlaces.join(", ")}\nEnter your place:`);
+        orderDetails.place = place;
+
+        // Show summary
+        alert(
+            `Order Summary:\n` +
+            `Item: ${orderDetails.itemName}\n` +
+            `Price: #${orderDetails.itemPrice}\n` +
+            `Option: ${orderDetails.deliveryOption}\n` +
+            `Pickup Location: ${orderDetails.pickupLocation}\n` +
+            `Pickup Time: ${orderDetails.pickupTime}\n` +
+            `State: ${orderDetails.state}\n` +
+            `Area: ${orderDetails.area}\n` +
+            `Street: ${orderDetails.street}\n` +
+            `Address: ${orderDetails.address}\n` +
+            `Place: ${orderDetails.place}`
+        );
+    } else if (deliveryOption === "2") {
+        orderDetails.deliveryOption = "Delivery";
+        orderDetails.deliveryAddress = prompt("Enter your delivery address:");
+        const deliveryTime = prompt("We deliver within 24 hours.\n1. Two days\n2. Three days");
+        orderDetails.deliveryTime = deliveryTime === "1" ? "2 days" : "3 days";
+
+        // Calculate delivery fee
+        let deliveryFee = 0;
+        if (deliveryTime === "1") {
+            deliveryFee = itemPrice * 0.4;
+        } else if (deliveryTime === "2") {
+            deliveryFee = itemPrice * 0.3;
+        } else {
+            alert("Invalid delivery time option. Please choose 1 for two days or 2 for three days.");
+            return;
+        }
+        orderDetails.totalPrice = itemPrice + deliveryFee;
+
+        // Show summary
+        alert(
+            `Order Summary:\n` +
+            `Item: ${orderDetails.itemName}\n` +
+            `Price: #${orderDetails.itemPrice}\n` +
+            `Option: ${orderDetails.deliveryOption}\n` +
+            `Delivery Address: ${orderDetails.deliveryAddress}\n` +
+            `Delivery Time: ${orderDetails.deliveryTime}\n` +
+            `Total Price (with delivery): #${orderDetails.totalPrice}`
+            
+
+        );
+    } else {
+        alert("Invalid option. Please choose 1 for pickup or 2 for delivery.");
+    }
+}
+// ...existing code...
 
             function addToCart(itemName, itemPrice) {
                 const cartItems = document.getElementById('cart-items');
@@ -665,13 +528,18 @@
                 Ibadan: ["Ibadan GRA", "Ibadan Town"],
                 Oyo: ["Oyo Road", "Oyo Town"],
                 Saki: ["Saki Junction", "Saki Town"]
-            };
-        
-
-            function clearCart() {
-                const cartItems = document.getElementById('cart-items');
-                cartItems.innerHTML = '';
             }
+            //i want to show all the order details that they fill in the form
+            const orderDetails = {
+                itemName: "",
+                itemPrice: 0,
+                deliveryOption: "",
+                deliveryAddress: "",
+                pickupLocation: "",
+                deliveryTime: ""
+            };
+
+
             function toggleCart() {
                 const cart = document.querySelector('.cart');
                 cart.style.display = cart.style.display === 'none' ? 'block' : 'none';
@@ -684,12 +552,8 @@
                 const phoneGadget = document.querySelector('.phone-gadget');
                 phoneGadget.style.display = phoneGadget.style.display === 'none' ? 'block' : 'none';
             }
-
-
-            
-            
         </script>
-        
+
         <address>
             <p>Contact us at: 
                 <a href="tel:+2349138154963">+234 913 815 4963</a></p>
